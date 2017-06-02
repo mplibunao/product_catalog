@@ -3,12 +3,13 @@
 namespace App;
 
 //use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Category extends Model
 {
-	public function products()
+	public function product()
 	{
-		return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id', 'id');
 	}
 
 	public static function availableCategory()
@@ -21,5 +22,18 @@ class Category extends Model
     	$query->where('name', $name);
 
     	return $query;
+    }
+
+    public function scopeFilter($query, $filter)
+    {
+
+        if (isset($filter['search_filter']) && $search_filter = $filter['search_filter']){
+
+            $query->where('name', 'like', '%' . $search_filter . '%');
+
+        }
+        
+        return $query;
+
     }
 }

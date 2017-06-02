@@ -6,7 +6,7 @@
 
 	<div class="col-sm-5 col-sm-offset-1">
 		
-		<h1>View {{ $product->name }}</h1>
+		<h1><i class="fa fa-eye"></i> View {{ $product->name }}</h1>
 
 		<form action="/admin/product/{{ $product->id }}/edit" method="GET">
 			

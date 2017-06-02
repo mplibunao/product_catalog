@@ -20,7 +20,11 @@ class AppServiceProvider extends ServiceProvider
 
             $count = \App\Category::all()->count();
 
-            $view->with('categories', $categories)->with('category_count', $count);
+            $allCategories = \App\Category::availableCategory()->get();
+
+            $view->with('categories', $categories)
+                ->with('category_count', $count)
+                ->with('allCategories', $allCategories);
         });
 
         // View composer for products table
@@ -29,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
             // Get all products
             $products = \App\Product::latest()->paginate(8);
 
-            $view->with('products', $products);
+            $allProducts = \App\Product::list();
+
+            $view->with('products', $products)->with('allProducts', $allProducts);
         });
 
         

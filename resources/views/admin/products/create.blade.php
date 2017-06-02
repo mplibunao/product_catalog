@@ -46,7 +46,7 @@
 				
 				<label for="category-search">Category:</label>
 				
-				<input type="text" class="form-control" name="category-search" id="category-search">
+				<input type="text" class="form-control" name="category-search" id="category-search" disabled>
 
 			</div>
 

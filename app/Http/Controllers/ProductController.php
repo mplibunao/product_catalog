@@ -19,15 +19,17 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $allProducts = \App\Product::list();
+
         $products = Product::latest()
             ->filter(request(['category_id']))
             ->paginate(8);
 
-        return view('admin.products.show', compact('products'));
+        return view('admin.products.show', compact('products', 'allProducts'));
     }
 
     /**
-     * 
+     * Create a new Product
      */
     public function create()
     {
@@ -36,7 +38,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Create a New Product
+     * Store new Product in database
      */
     public function store()
     {
@@ -45,6 +47,7 @@ class ProductController extends Controller
             'description' => 'required',
         ]);
 
+        /*
         $category_id = NULL;
 
         // Find Category_id
@@ -53,13 +56,15 @@ class ProductController extends Controller
             $category_id = Category::findByName($category_name)
                 ->first(['id'])->id;
         }
+        */
 
         Product::create([
             'name' => request('name'),
             'stock' => request('stock'),
             'description' => request('description'),
             'image' => request('image'),
-            'category_id' => $category_id
+            // removed category_id since it causes errors if category string does not have an equivalent category_id
+            //'category_id' => $category_id
             //'category_id' => request('category-search')->category()
         ]);
 
@@ -70,13 +75,32 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
+        $allProducts = \App\Product::list();
+
         //return request(['search_filter']);
         $products = Product::latest()
             ->filter(request(['search_filter']))
             ->paginate(8);
-
             //return $products;
-        return view('admin.products.show', compact('products'));
+        return view('admin.products.show', compact('products', 'allProducts'));
+
+    }
+
+    // Show category search result when assigning category to product
+    public function searchCategory($id)
+    {
+
+        $product = Product::find($id);
+        // Autocomplete results
+        $allCategories = \App\Category::availableCategory()->get();
+
+        // Filter categories by search query
+        $categories = Category::latest()
+            ->filter(request(['search_filter']))
+            ->orderBy('name', 'desc')
+            ->paginate(8);
+
+        return view('admin.products.assign_category', compact('product', 'categories', 'allCategories'));
 
     }
 
@@ -120,7 +144,8 @@ class ProductController extends Controller
         // Find Category_id
         if ($category_name = request('category-search'))
         {
-            $category_id = Category::findByName($category)
+
+            $category_id = Category::findByName($category_name)
                 ->first(['id'])->id;
         }
 
@@ -151,17 +176,40 @@ class ProductController extends Controller
     public function assignCategory($id)
     {
         $product = Product::find($id);
+        $allCategories = \App\Category::availableCategory()->get();
 
-        $categories = Category::availableCategory()->orderBy('name', 'desc')->paginate(8);
+        // Exclude current category if it already exists
+        if ($product->category_id !== NULL && $currentCategory = $product->category_id){
+            
+            $categories = Category::availableCategory()
+                ->where('id', '!=', $currentCategory)
+                ->orderBy('name', 'desc')
+                ->paginate(8);
 
-        return view('admin.products.assign_category', compact('product', 'categories'));
+        } else{
+
+            $categories = Category::availableCategory()
+                ->orderBy('name', 'desc')
+                ->paginate(8);
+        }
+
+
+        return view('admin.products.assign_category', compact('product', 'categories', 'allCategories'));
 
     }
 
     // Store Product's assigned Category
-    public function storeCategory()
+    public function storeCategory($id)
     {
+        $this->validate(request(), [
+            'category' => 'required'
+        ]);
 
+        $product = Product::find($id);
+        $product->category_id = request('category');
+        $product->save();
+        
+        return redirect('/admin/product/'. $product->id . '/show');
     }
 
 }

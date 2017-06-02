@@ -9,7 +9,15 @@
 			<div class="modal-body">
 				<div class="tab-content">
 
+					@if (isset($product->id))
+
 					<form action="/admin/product/{{ $product->id }}/delete" method="POST">
+
+					@else
+
+					<form action="" id="delete-form" method="POST">
+
+					@endif
 
 						{{ csrf_field() }}
 
@@ -19,7 +27,15 @@
 					
 							<label for="name">Name:</label>
 
-							<input type="text" class="form-control" name="name" id="name" placeholder="Pencil" value="{{ $product->name }}" disabled required>
+							@if (isset($product->id))
+
+								<input type="text" class="form-control" name="name" id="delete-name" placeholder="Pencil" value="{{ $product->name }}" disabled required>
+
+							@else
+
+								<input type="text" class="form-control" name="name" id="delete-name" placeholder="Pencil" disabled required>
+
+							@endif
 
 						</div>
 

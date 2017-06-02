@@ -6,7 +6,7 @@
 
 	<div class="col-sm-5 col-sm-offset-1">
 		
-		<h1>Edit {{ $product->name }}</h1>
+		<h1><i class="fa fa-edit"></i> Edit {{ $product->name }}</h1>
 
 		<form action="/admin/product/{{ $product->id }}/edit" method="POST">
 			
@@ -47,12 +47,16 @@
 			<div class="form-group">
 				
 				<label for="category-search">Category:</label>
-
-				@if ($product->category_id == NULL)
-					<input type="text" class="form-control" name="category-search" id="category-search" value="{{ $product->category_id }}">
-				@else
-					<input type="text" class="form-control" name="category-search" id="category-search" value="{{ $product->category->name }}">
-				@endif
+				<div class="input-group">
+					@if ($product->category_id == NULL)
+						<input type="text" class="form-control" name="category-search" id="category-search" value="{{ $product->category_id }}" disabled>
+					@else
+						<input type="text" class="form-control" name="category-search" id="category-search" value="{{ $product->category->name }}" disabled>
+					@endif
+					<span class="input-group-btn">
+						<a href="/admin/product/{{ $product->id }}/assign_category"><button class="btn btn-info" type="button">View Categories</button></a>
+					</span>
+				</div>
 
 			</div>
 

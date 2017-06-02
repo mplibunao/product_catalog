@@ -11,25 +11,9 @@
 
 				<li><a href="/admin">Dashboard</a></li>
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/admin/product/create">Add New Product</a></li>
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Action</a></li>
-					</ul>
-				</li>
+				<li><a href="/admin/product/create">Add New Product</a></li>
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories
-					<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="/admin/category/create">Create Product Category</a></li>
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Action</a></li>
-					</ul>
-				</li>
+				<li><a href="/admin/">View All Products</a></li>
 
 				@endif
 

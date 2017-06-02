@@ -8,19 +8,19 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-/* padding for nav bar */
+/**  padding for nav bar  **/
 .nav-padding{
 	padding-top:70px;
 }
 
-/* Login */
+/**  Login  **/
 .nav-login{
 	padding-top:80px;
 }
 
 
 
-/* Home Page */
+/**  Home Page  **/
 .home-content{
     text-align: center;
 }
@@ -37,7 +37,7 @@
 }
 
 
-/* Sidebar navigation */
+/**  Sidebar navigation  **/
 .nav-sidebar {
   margin-right: -21px;
   margin-bottom: 20px;
@@ -55,7 +55,7 @@
 }
 
 
-// Autocomplete aria
+/**  Autocomplete aria  **/
 .ui-helper-hidden-accessible {
     border: 0;
     clip: rect(0 0 0 0);
@@ -81,12 +81,12 @@
   margin-top:2px;
 }
 
-// Font Awesome icons
+/**  Font Awesome icons  **/
 .fa{
   margin-left:5px;
 }
 
-// Modal
+/**  Modal  **/
 .modal-text{
   padding-bottom:20px;
   margin-left:auto;
@@ -98,13 +98,22 @@
   padding-right:30px;
 }
 
-// Pagination
+/** Pagination  **/
 .pagination{
   margin-top:10px;
   margin-bottom:10px;
 }
 
-// Assign Category
-.radio{
-  
+/** Assign Category  **/
+
+.assign-category-form{
+  margin-top:20px
+}
+
+/**  Positioning  **/
+.margin-bot{
+  margin-bottom:5px;
+}
+.margin-right{
+  margin-right:10px;
 }

@@ -12,19 +12,6 @@ class Product extends Model
     	return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    /* Combined to one scope filter
-    public function scopeSearch($query, $filter)
-    {
-    	$query->where('name', 'like', '%' . $product . '%');
-    	return $query;
-    	
-    	if (isset($filter)){
-    		$query->where('name', 'like', '%' . $filter . '%');
-    	}
-
-    	return $query;
-    }*/
-
     public function scopeFilter($query, $filter)
     {
 
@@ -47,5 +34,12 @@ class Product extends Model
 
     	return $query;
 
+    }
+
+    // Returns alphabetically sorted list of all products
+
+    public static function list()
+    {
+        return Product::latest()->orderBy('name', 'desc')->get();
     }
 }

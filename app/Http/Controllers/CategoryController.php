@@ -14,14 +14,34 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function index()
     {
-        //
+
+        $allCategories = \App\Category::availableCategory()->get();
+
+        $categories = Category::availableCategory()
+            ->orderBy('name', 'desc')
+            ->paginate(8);
+
+        return view('admin.categories.index', compact('categories', 'allCategories'));
     }
+
+    // Show All products based on search results
+    public function search()
+    {
+        $allCategories = \App\Category::availableCategory()->get();
+
+        $categories = Category::latest()
+            ->filter(request(['search_filter']))
+            ->paginate(8);
+
+        return view('admin.categories.index', compact('allCategories', 'categories'));
+        
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

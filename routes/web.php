@@ -31,6 +31,10 @@ Route::get('/admin/category/create', 'CategoryController@create');
 
 Route::post('/admin/category/create', 'CategoryController@store');
 
+Route::get('/admin/category', 'CategoryController@index');
+
+// To-do
+Route::get('/admin/category/search', 'CategoryController@search');
 
 // Product
 
@@ -53,8 +57,9 @@ Route::post('/admin/product/{product}/delete', 'ProductController@destroy');
 
 Route::get('/admin/product/{product}/assign_category', 'ProductController@assignCategory');
 
-Route::get('/admin/product/{product}/assign_category/search', 'ProductController@search');
+// to-do
+Route::get('/admin/product/{product}/assign_category/search', 'ProductController@searchCategory');
 
-//Route::post('')
+Route::post('/admin/product/{product}/assign_category', 'ProductController@storeCategory');
 
 
