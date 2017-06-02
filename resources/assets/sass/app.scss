@@ -1,0 +1,110 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/* padding for nav bar */
+.nav-padding{
+	padding-top:70px;
+}
+
+/* Login */
+.nav-login{
+	padding-top:80px;
+}
+
+
+
+/* Home Page */
+.home-content{
+    text-align: center;
+}
+
+.home-title{
+    font-size: 84px;
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+}
+
+.nav-home{
+	padding-top: 130px;
+}
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px;
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.sidebar-header {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+// Autocomplete aria
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.ui-autocomplete{
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color:#FFFFFF;
+  overflow-y:auto;
+  overflow-x:hidden;
+  width:20%;
+  border:1px solid #ccc;
+  border-radius:5px;
+  cursor:pointer;
+  list-style:none;
+  padding:0 0 0 0;
+  margin-top:2px;
+}
+
+// Font Awesome icons
+.fa{
+  margin-left:5px;
+}
+
+// Modal
+.modal-text{
+  padding-bottom:20px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.modal-btn{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+// Pagination
+.pagination{
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+// Assign Category
+.radio{
+  
+}
