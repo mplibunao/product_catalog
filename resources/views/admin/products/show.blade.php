@@ -51,8 +51,6 @@
 								<a href="/admin/product/{{ $product['id'] }}/show" title="View"><i class="fa fa-eye"></i></a>
 								<a href="/admin/product/{{ $product['id'] }}/edit" title="Edit"><i class="fa fa-edit"></i></a>
 								<a href="/admin/product/{{ $product['id'] }}/assign_category" title="Assign Category"><i class="fa fa-tags"></i></a>
-								<a href="/admin/product/{{ $product['id'] }}/delete" title="Delete"><i class="fa fa-trash-o"></i></a>
-
 							</td>
 						</tr>
 					@endforeach
